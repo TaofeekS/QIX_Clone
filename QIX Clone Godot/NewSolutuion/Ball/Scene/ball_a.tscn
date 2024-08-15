@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc6gos63eymj3"]
+
+[ext_resource type="PackedScene" uid="uid://u0j1757p01p8" path="res://NewSolutuion/Ball/Scene/ball.tscn" id="1_870ny"]
+[ext_resource type="Script" path="res://NewSolutuion/Ball/Script/ball_a.gd" id="2_d6vd0"]
+
+[node name="ballA" instance=ExtResource("1_870ny")]
+script = ExtResource("2_d6vd0")
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.917647, 0.584314, 0.2, 1)
+
+[node name="Area2D" parent="." index="2"]
+visible = false

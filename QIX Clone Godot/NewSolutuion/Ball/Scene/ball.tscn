@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://u0j1757p01p8"]
+
+[ext_resource type="Script" path="res://NewSolutuion/Ball/Script/ball.gd" id="1_gqh1d"]
+[ext_resource type="Texture2D" uid="uid://cdfhjacwwffut" path="res://assets/tilesets.png" id="2_h4gm1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wy715"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y43kp"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in0xi"]
+atlas = ExtResource("2_h4gm1")
+region = Rect2(64, 49, 16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2648"]
+size = Vector2(2, 2)
+
+[node name="ball" type="RigidBody2D"]
+position = Vector2(282, 196)
+collision_layer = 16
+physics_material_override = SubResource("PhysicsMaterial_wy715")
+gravity_scale = 0.0
+linear_velocity = Vector2(-700, 500)
+linear_damp_mode = 1
+script = ExtResource("1_gqh1d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y43kp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.341176, 0.733333, 0.815686, 1)
+texture = SubResource("AtlasTexture_in0xi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 9
+visibility_layer = 4
+shape = SubResource("RectangleShape2D_o2648")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
